@@ -1,26 +1,243 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ffffff;
+  --web3-primary: #3b82f6;
+  --web3-secondary: #8b5cf6;
+  --web3-accent: #06b6d4;
+  --space-dark: #0f0f23;
+  --neon-blue: #00d4ff;
+  --neon-purple: #8b5cf6;
 }
 
-@theme inline {
+/* CSS Variables for theming */
+:root {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Custom Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 0.8;
+  }
+}
+
+@keyframes spaceFloat {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-30px) translateX(10px);
+    opacity: 0.8;
+  }
+}
+
+@keyframes neonPulse {
+  0%, 100% {
+    text-shadow: 0 0 5px var(--neon-blue), 0 0 10px var(--neon-blue), 0 0 15px var(--neon-blue);
+    opacity: 0.8;
+  }
+  50% {
+    text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue);
+    opacity: 1;
+  }
+}
+
+@keyframes blackHole {
+  0% {
+    transform: rotate(0deg) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+    opacity: 0.3;
+  }
+}
+
+@keyframes progressFill {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 85%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes starTwinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes nebulaShift {
+  0%, 100% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg) scale(1.1);
+  }
+}
+
+/* Animation Classes */
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-space-float {
+  animation: spaceFloat 4s ease-in-out infinite;
+}
+
+.animate-neon-pulse {
+  animation: neonPulse 2s ease-in-out infinite;
+}
+
+.animate-black-hole {
+  animation: blackHole 8s ease-in-out infinite;
+}
+
+.animate-star-twinkle {
+  animation: starTwinkle 2s ease-in-out infinite;
+}
+
+.animate-nebula-shift {
+  animation: nebulaShift 10s ease-in-out infinite;
+}
+
+.animate-progress {
+  animation: progressFill 2s ease-out forwards;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Web3 Space Theme Styles */
+.web3-space {
+  background: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+  position: relative;
+}
+
+.neon-glow {
+  text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue);
+}
+
+.neon-purple-glow {
+  box-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple), 0 0 30px var(--neon-purple);
+}
+
+.cyber-grid {
+  background-image: 
+    linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.space-gradient {
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f0f23 100%);
+}
+
+/* Pixel Art Styles */
+.pixel-art {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* Glassmorphism Effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 640px) {
+  .mobile-padding {
+    padding: 1rem;
+  }
+  
+  .mobile-text {
+    font-size: 0.875rem;
+  }
+  
+  .mobile-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Focus States for Accessibility */
+*:focus {
+  outline: 2px solid var(--telegram-accent);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
