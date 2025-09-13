@@ -21,8 +21,8 @@ export async function POST(request: NextRequest) {
       count,
       message: 'Successfully added to waitlist!'
     });
-  } catch (error: any) {
-    if (error.message === 'Email already exists in waitlist') {
+  } catch (error: unknown) {
+    if (error instanceof Error && error.message === 'Email already exists in waitlist') {
       return NextResponse.json(
         { error: 'Email already exists in waitlist' },
         { status: 409 }
